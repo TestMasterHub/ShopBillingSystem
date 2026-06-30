@@ -1,0 +1,69 @@
+:root {
+  --tmh-primary: #1f6f50;
+  --tmh-primary-dark: #155c40;
+  --tmh-bg: #f5f7f6;
+  --tmh-danger: #c0392b;
+  --tmh-warning: #e67e22;
+  --tmh-text: #1c2b25;
+  --tmh-border: #dfe6e2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--tmh-bg);
+  color: var(--tmh-text);
+  font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  padding: 1.25rem;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.btn-primary {
+  background-color: var(--tmh-primary) !important;
+  border-color: var(--tmh-primary) !important;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--tmh-primary-dark) !important;
+  border-color: var(--tmh-primary-dark) !important;
+}
+
+.btn-lg-touch {
+  min-height: 48px;
+  font-size: 1.05rem;
+}
+
+table.table-touch th, table.table-touch td {
+  vertical-align: middle;
+  padding: 0.75rem;
+}
+
+.low-stock-badge {
+  background-color: var(--tmh-warning);
+  color: #fff;
+}
+
+@media (max-width: 576px) {
+  .app-main {
+    padding: 0.75rem;
+  }
+}

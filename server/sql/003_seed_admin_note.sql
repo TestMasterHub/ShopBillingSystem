@@ -1,0 +1,8 @@
+-- The default admin user is NOT seeded via raw SQL because the password must be
+-- hashed with bcrypt, which runs in Node (see db/ensureAdminUser.js).
+-- This file is intentionally left as a placeholder / reference only.
+--
+-- If you prefer to seed manually, generate a bcrypt hash in Node:
+--   node -e "console.log(require('bcryptjs').hashSync('admin123', 10))"
+-- then run:
+--   INSERT INTO billingsystemusers (username, password_hash, role) VALUES ('admin', '<hash>', 'admin');

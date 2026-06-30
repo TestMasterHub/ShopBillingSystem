@@ -1,0 +1,28 @@
+{
+  "name": "shop-billing-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shop Billing & Inventory Management System - A Product of TestMasterHub",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "client": "npm run dev --prefix client",
+    "server": "npm run dev --prefix server",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "install-all": "npm install --prefix client && npm install --prefix server"
+  },
+  "keywords": [
+    "billing",
+    "inventory",
+    "shop",
+    "sqlite",
+    "react",
+    "express",
+    "testmasterhub"
+  ],
+  "author": "TestMasterHub",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
