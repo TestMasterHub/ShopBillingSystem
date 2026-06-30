@@ -7,8 +7,8 @@ import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Billing from './pages/Billing.jsx';
 import Stock from './pages/Stock.jsx';
-import BillHistory from './pages/BillHistory.jsx';
-import BillView from './pages/BillView.jsx';
+import BillHistory from './pages/Billhistory.jsx';
+import BillView from './pages/Billview.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 
 function AppShell({ children }) {
