@@ -7,8 +7,8 @@ import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Billing from './pages/Billing.jsx';
 import Stock from './pages/Stock.jsx';
-//import BillHistory from './pages/BillHistory.jsx';
-//import BillView from './pages/BillView.jsx';
+import BillHistory from './pages/BillHistory.jsx';
+import BillView from './pages/BillView.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 
 function AppShell({ children }) {
@@ -33,22 +33,27 @@ export default function App() {
       <Route
         path="/dashboard"
         element={
+          <ProtectedRoute>
             <AppShell><Dashboard /></AppShell>
+            </ProtectedRoute>
         }
       />
       <Route
         path="/billing"
         element={
+          <ProtectedRoute>
             <AppShell><Billing /></AppShell>
+            </ProtectedRoute>
         }
       />
       <Route
         path="/stock"
         element={
-          <AppShell><Stock /></AppShell>
+          <ProtectedRoute><AppShell><Stock /></AppShell></ProtectedRoute>
+
         }
       />
-      {/* <Route
+      <Route
         path="/bill-history"
         element={
           <ProtectedRoute>
@@ -63,7 +68,7 @@ export default function App() {
             <AppShell><BillView /></AppShell>
           </ProtectedRoute>
         }
-      /> */}
+      />
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
