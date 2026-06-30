@@ -12,7 +12,7 @@ const dashboardRoutes = require('./routes/dashboard');
 const app = express();
 
 app.use(cors({
-  origin: 'https://shopbillingsystem.netlify.app/',
+  origin: 'https://shopbillingsystem.netlify.app',
   credentials: true
 }));
 app.use(express.json());
