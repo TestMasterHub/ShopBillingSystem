@@ -76,13 +76,13 @@ export default function BillHistory() {
 
   const totalBills = bills.length;
   const todayStr = new Date().toISOString().slice(0, 10);
-  const todaysBills = bills.filter((b) => (b.date || '').slice(0, 10) === todayStr).length;
+  const todaysBills = bills.filter((b) => (b.billDate || '').slice(0, 10) === todayStr).length;
   const totalSalesAmount = bills.reduce((sum, b) => sum + (Number(b.grandTotal) || 0), 0);
   const averageBillValue = totalBills > 0 ? totalSalesAmount / totalBills : 0;
 
   const sortedBills = [...bills].sort((a, b) => {
-    const aTime = new Date(`${a.date} ${a.time || ''}`).getTime();
-    const bTime = new Date(`${b.date} ${b.time || ''}`).getTime();
+    const aTime = new Date(`${a.billDate}T${a.billTime || '00:00:00'}`).getTime();
+    const bTime = new Date(`${b.billDate}T${b.billTime || '00:00:00'}`).getTime();
     return bTime - aTime;
   });
 
@@ -174,9 +174,9 @@ export default function BillHistory() {
                   sortedBills.map((bill) => (
                     <tr key={bill.id}>
                       <td>{bill.billNumber}</td>
-                      <td>{bill.date}</td>
-                      <td>{bill.time}</td>
-                      <td>{bill.itemsCount}</td>
+                      <td>{bill.billDate}</td>
+                      <td>{bill.billTime}</td>
+                      <td>{bill.totalItems}</td>
                       <td>₹{Number(bill.subtotal || 0).toFixed(2)}</td>
                       <td>₹{Number(bill.discount || 0).toFixed(2)}</td>
                       <td>₹{Number(bill.grandTotal || 0).toFixed(2)}</td>

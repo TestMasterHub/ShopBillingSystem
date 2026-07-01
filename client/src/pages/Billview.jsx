@@ -81,11 +81,11 @@ export default function BillView() {
                 </div>
                 <div className="col-6 col-md-3">
                   <div className="text-muted small mb-1">Date</div>
-                  <div className="fw-semibold">{bill.date}</div>
+                  <div className="fw-semibold">{bill.billDate}</div>
                 </div>
                 <div className="col-6 col-md-3">
                   <div className="text-muted small mb-1">Time</div>
-                  <div className="fw-semibold">{bill.time}</div>
+                  <div className="fw-semibold">{bill.billTime}</div>
                 </div>
                 {bill.status && (
                   <div className="col-6 col-md-3">

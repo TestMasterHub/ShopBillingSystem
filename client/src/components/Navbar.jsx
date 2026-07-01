@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 
@@ -6,6 +6,18 @@ export default function Navbar() {
   const { logout, user } = useAuth();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the mobile drawer automatically if the window is resized up to
+  // desktop width while it's open, so it can never linger as a stray panel.
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleLogout = () => {
     setMenuOpen(false);
@@ -60,9 +72,11 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile offcanvas menu — slides in from the right */}
+      {/* Mobile offcanvas menu — slides in from the right. d-md-none ensures
+          this can never render at desktop widths, even if menuOpen is stuck
+          true from a resize. */}
       <div
-        className={`offcanvas offcanvas-end ${menuOpen ? 'show' : ''}`}
+        className={`offcanvas offcanvas-end d-md-none ${menuOpen ? 'show' : ''}`}
         tabIndex="-1"
         id="mainNavOffcanvas"
         style={{ visibility: menuOpen ? 'visible' : 'hidden' }}
@@ -95,9 +109,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Backdrop */}
+      {/* Backdrop — only relevant on mobile; offcanvas itself is d-md-none
+          so there's nothing to back up on desktop, but guard anyway */}
       {menuOpen && (
-        <div className="offcanvas-backdrop fade show" onClick={closeMenu}></div>
+        <div className="offcanvas-backdrop fade show d-md-none" onClick={closeMenu}></div>
       )}
     </nav>
   );
